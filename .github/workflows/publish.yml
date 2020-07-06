@@ -5,16 +5,23 @@ jobs:
   publish:
     strategy:      
       matrix:
-        number: [0, 1, 2, 3]
+        number: [0, 1, 2, 3, 4]
         include:
           - number: 0
-            name: "@${{ github.repository }}"
+            name: "@jcansdale/npm-errors"
+            repository: "https://github.com/${{ github.repository }}"
           - number: 1
             name: "@jcansdale-test/NPM-ERRORS"
+            repository: "https://github.com/${{ github.repository }}"
           - number: 2
             name: "@JCANSDALE-TEST/npm-errors"
+            repository: "https://github.com/${{ github.repository }}"
           - number: 3
             name: "@jcansdale-missing/npm-errors"
+            repository: "https://github.com/${{ github.repository }}"
+          - number: 4
+            name: "@jcansdale/npm-errors"
+            repository: "https://github.com/jcansdale/nuget-errors"
       fail-fast: false
 
     runs-on: ubuntu-latest
@@ -26,7 +33,7 @@ jobs:
         {
           "name": "${{ matrix.name }}",
           "version": "1.0.0-g${{ github.sha }}-${{ matrix.number }}",
-          "repository": "https://github.com/${{ github.repository }}"
+          "repository": "${{ matrix.repository }}"
         }
         EOF
     - run: echo '//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}' > .npmrc
