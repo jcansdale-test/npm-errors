@@ -22,6 +22,7 @@ jobs:
           - number: 4
             name: "@jcansdale-test/npm-errors"
             repository: "https://github.com/jcansdale/nuget-errors"
+          - _authToken: "${GITHUB_TOKEN}"
       fail-fast: false
 
     runs-on: ubuntu-latest
@@ -36,7 +37,7 @@ jobs:
           "repository": "${{ matrix.repository }}"
         }
         EOF
-    - run: echo '//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}' > .npmrc
+    - run: echo '//npm.pkg.github.com/:_authToken=${{ matrix._authToken }}' > .npmrc
     - run: npm publish --registry=https://npm.pkg.github.com
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
