@@ -5,8 +5,16 @@ jobs:
   publish:
     strategy:      
       matrix:
-        name:
-          - "@${{ github.repository }}"
+        number: [0, 1, 2, 3]
+        include:
+          - number: 0
+            name: "@${{ github.repository }}"
+          - number: 1
+            name: "@jcansdale-test/NPM-ERRORS"
+          - number: 2
+            name: "@JCANSDALE-TEST/npm-errors"
+          - number: 3
+            name: "@jcansdale-missing/npm-errors"
 
     runs-on: ubuntu-latest
 
@@ -16,7 +24,7 @@ jobs:
         cat <<- EOF > package.json
         {
           "name": "${{ matrix.name }}",
-          "version": "1.0.0-g${{ github.sha }}",
+          "version": "1.0.0-g${{ github.sha }}-${{ matrix.number }}",
           "repository": "https://github.com/${{ github.repository }}"
         }
         EOF
