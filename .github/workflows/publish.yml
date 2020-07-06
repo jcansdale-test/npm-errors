@@ -7,22 +7,18 @@ jobs:
       matrix:
         number: [0, 1, 2, 3, 4]
         include:
+          - name: "@jcansdale-test/npm-errors"
+          - repository: "https://github.com/${{ github.repository }}"
+          - _authToken: "${GITHUB_TOKEN}"
           - number: 0
-            name: "@jcansdale-test/npm-errors"
-            repository: "https://github.com/${{ github.repository }}"
           - number: 1
             name: "@jcansdale-test/NPM-ERRORS"
-            repository: "https://github.com/${{ github.repository }}"
           - number: 2
             name: "@JCANSDALE-TEST/npm-errors"
-            repository: "https://github.com/${{ github.repository }}"
           - number: 3
             name: "@jcansdale-missing/npm-errors"
-            repository: "https://github.com/${{ github.repository }}"
           - number: 4
-            name: "@jcansdale-test/npm-errors"
             repository: "https://github.com/jcansdale/nuget-errors"
-          - _authToken: "${GITHUB_TOKEN}"
       fail-fast: false
 
     runs-on: ubuntu-latest
