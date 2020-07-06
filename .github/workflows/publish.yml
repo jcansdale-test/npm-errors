@@ -3,6 +3,11 @@ on:
 
 jobs:
   publish:
+    strategy:      
+      matrix:
+        name:
+          - "@${{ github.repository }}"
+
     runs-on: ubuntu-latest
 
     steps:
@@ -10,7 +15,7 @@ jobs:
       run: |
         cat <<- EOF > package.json
         {
-          "name": "@${{ github.repository }}",
+          "name": "${{ matrix.name }}",
           "version": "1.0.0-g${{ github.sha }}",
           "repository": "https://github.com/${{ github.repository }}"
         }
