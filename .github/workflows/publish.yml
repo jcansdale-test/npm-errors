@@ -10,6 +10,7 @@ jobs:
           - name: "@jcansdale-test/npm-errors"
           - repository: "https://github.com/${{ github.repository }}"
           - _authToken: "${GITHUB_TOKEN}"
+          - registry: https://npm.pkg.github.com
           - number: 0
           - number: 1
             name: "@jcansdale-test/NPM-ERRORS"
@@ -38,6 +39,6 @@ jobs:
         }
         EOF
     - run: echo '//npm.pkg.github.com/:_authToken=${{ matrix._authToken }}' > .npmrc
-    - run: npm publish --registry=https://npm.pkg.github.com
+    - run: npm publish --registry=${{ matrix.registry }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
