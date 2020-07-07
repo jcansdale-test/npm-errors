@@ -5,7 +5,7 @@ jobs:
   publish:
     strategy:      
       matrix:
-        number: [0, 1, 2, 3, 4, 5, 6]
+        number: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
         include:
           - name: "@jcansdale-test/npm-errors"
           - repository: "https://github.com/${{ github.repository }}"
@@ -24,6 +24,18 @@ jobs:
             _authToken: "invalid"
           - number: 6
             _authToken: ""
+          - number: 7
+            registry: https://npm.pkg.github.com/jcansdale-test
+          - number: 8
+            registry: https://npm.pkg.github.com/@jcansdale-test
+          - number: 9
+            registry: https://npm.pkg.github.com/jcansdale
+          - number: 10
+            registry: https://npm.pkg.github.com/---unknown---
+          - number: 11
+            registry: https://registry.npmjs.org
+          - number: 12
+            registry: https://github.org
       fail-fast: false
 
     runs-on: ubuntu-latest
