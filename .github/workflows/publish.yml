@@ -27,20 +27,25 @@ jobs:
           - number: 7
             _authToken: "2a78e44b221e182c6e1e24fe9aec7e76f122391b" # no-scope token
           - number: 8
-            registry: https://npm.pkg.github.com/jcansdale-test
+            _authToken: $READ_AND_WRITE_PACKAGES_TOKEN
           - number: 9
-            registry: https://npm.pkg.github.com/@jcansdale-test
+            registry: https://npm.pkg.github.com/jcansdale-test
           - number: 10
-            registry: https://npm.pkg.github.com/jcansdale
+            registry: https://npm.pkg.github.com/@jcansdale-test
           - number: 11
-            registry: https://npm.pkg.github.com/---unknown---
+            registry: https://npm.pkg.github.com/jcansdale
           - number: 12
-            registry: https://registry.npmjs.org
+            registry: https://npm.pkg.github.com/---unknown---
           - number: 13
+            registry: https://registry.npmjs.org
+          - number: 14
             registry: https://github.org
       fail-fast: false
 
     runs-on: ubuntu-latest
+
+    env:
+      READ_AND_WRITE_PACKAGES_TOKEN: ${{ secrets.READ_AND_WRITE_PACKAGES_TOKEN }}
 
     steps:
     - name: create package.json
