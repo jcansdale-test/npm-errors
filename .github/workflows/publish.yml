@@ -40,6 +40,9 @@ jobs:
             registry: https://registry.npmjs.org
           - number: 14
             registry: https://github.org
+          - number: 15
+            name: "npm-errors"
+            registry: https://npm.pkg.github.com/@jcansdale-test
       fail-fast: false
 
     runs-on: ubuntu-latest
