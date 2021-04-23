@@ -70,4 +70,3 @@ jobs:
     - run: npm publish --registry=${{ matrix.registry }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
