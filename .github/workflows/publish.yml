@@ -31,34 +31,35 @@ jobs:
             _authToken: "invalid"
             job-name: invalid-token
           - number: 6
-            _authToken: "invalid"
-            job-name: invalid-token
-          - number: 7
             _authToken: "2a78e44b221e182c6e1e24fe9aec7e76f122391b" # no-scope token
             job-name: no-scope-token
-          - number: 8
+          - number: 7
             _authToken: $READ_AND_WRITE_PACKAGES_TOKEN
             job-name: read-and-write-packages-token
-          - number: 9
+          - number: 8
             registry: https://npm.pkg.github.com/jcansdale-test
             job-name: registry-proxy-style
-          - number: 10
+          - number: 9
             registry: https://npm.pkg.github.com/@jcansdale-test
             job-name: registry-proxy-style-with-at
-          - number: 11
+          - number: 10
             registry: https://npm.pkg.github.com/jcansdale
             job-name: registry-proxy-style-different-owner
-          - number: 12
+          - number: 11
             registry: https://npm.pkg.github.com/---unknown---
             job-name: registry-proxy-style-unknown-owner
-          - number: 13
+          - number: 12
             registry: https://registry.npmjs.org
             job-name: registry-npmjs-org
-          - number: 14
+          - number: 13
             registry: https://github.org
             job-name: registry-github-org
-          - number: 15
+          - number: 14
             name: "npm-errors"
+            registry: https://npm.pkg.github.com/@jcansdale-test
+            job-name: registry-proxy-style-with-at-unscoped-package
+          - number: 15
+            name: "npm.errors"
             registry: https://npm.pkg.github.com/@jcansdale-test
             job-name: registry-proxy-style-with-at-unscoped-package
           - number: 16
