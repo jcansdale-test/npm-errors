@@ -14,6 +14,7 @@ jobs:
           - _authToken: "${GITHUB_TOKEN}"
           - registry: https://npm.pkg.github.com
           - number: 0
+            job-name: default
           - number: 1
             name: "@jcansdale-test/NPM-ERRORS"
           - number: 2
