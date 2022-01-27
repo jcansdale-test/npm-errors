@@ -38,16 +38,16 @@ jobs:
             job-name: read-and-write-packages-token
           - number: 8
             registry: https://npm.pkg.github.com/jcansdale-test
-            job-name: registry-proxy-style
+            job-name: proxy-style
           - number: 9
             registry: https://npm.pkg.github.com/@jcansdale-test
-            job-name: registry-proxy-style-with-at
+            job-name: proxy-style-with-at
           - number: 10
             registry: https://npm.pkg.github.com/jcansdale
-            job-name: registry-proxy-style-different-owner
+            job-name: proxy-style-different-owner
           - number: 11
             registry: https://npm.pkg.github.com/---unknown---
-            job-name: registry-proxy-style-unknown-owner
+            job-name: proxy-style-unknown-owner
           - number: 12
             registry: https://registry.npmjs.org
             job-name: registry-npmjs-org
@@ -57,11 +57,11 @@ jobs:
           - number: 14
             name: "npm-errors"
             registry: https://npm.pkg.github.com/@jcansdale-test
-            job-name: registry-proxy-style-with-at-unscoped-package
+            job-name: proxy-style-with-at-unscoped
           - number: 15
             name: "npm.errors"
             registry: https://npm.pkg.github.com/@jcansdale-test
-            job-name: registry-proxy-style-with-at-unscoped-package
+            job-name: proxy-style-unscoped-with-dot
           - number: 16
             registry: npm.pkg.github.com
             job-name: registry-no-https
