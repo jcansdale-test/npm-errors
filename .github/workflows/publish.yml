@@ -3,60 +3,97 @@ on:
 
 jobs:
   publish:
+  
     strategy:      
       matrix:
-        number: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+        number: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
         include:
+          - job-name: publish
           - name: "@jcansdale-test/npm-errors"
           - repository: "https://github.com/${{ github.repository }}"
           - _authToken: "${GITHUB_TOKEN}"
           - registry: https://npm.pkg.github.com
           - number: 0
+            job-name: default
           - number: 1
             name: "@jcansdale-test/NPM-ERRORS"
+            job-name: uppercase-package-name
           - number: 2
             name: "@JCANSDALE-TEST/npm-errors"
+            job-name: uppercase-scope
           - number: 3
             name: "@jcansdale-missing/npm-errors"
+            job-name: unknown-owner
           - number: 4
             repository: "https://github.com/jcansdale/nuget-errors"
+            job-name: different-owner
           - number: 5
             _authToken: "invalid"
+            job-name: invalid-token
           - number: 6
-            _authToken: "invalid"
-          - number: 7
             _authToken: "2a78e44b221e182c6e1e24fe9aec7e76f122391b" # no-scope token
-          - number: 8
+            job-name: no-scope-token
+          - number: 7
             _authToken: $READ_AND_WRITE_PACKAGES_TOKEN
+            job-name: read-and-write-packages-token
+          - number: 8
+            registry: https://npm.pkg.github.com/jcansdale-test
+            job-name: proxy-style
           - number: 9
             registry: https://npm.pkg.github.com/jcansdale-test
+            name: "npm-errors"
+            job-name: proxy-style-unscoped
           - number: 10
             registry: https://npm.pkg.github.com/@jcansdale-test
+            job-name: proxy-style-with-at
           - number: 11
             registry: https://npm.pkg.github.com/jcansdale
+            job-name: proxy-style-different-owner
           - number: 12
             registry: https://npm.pkg.github.com/---unknown---
+            job-name: proxy-style-unknown-owner
           - number: 13
             registry: https://registry.npmjs.org
+            job-name: registry-npmjs-org
           - number: 14
             registry: https://github.org
+            job-name: registry-github-org
           - number: 15
             name: "npm-errors"
             registry: https://npm.pkg.github.com/@jcansdale-test
+            job-name: proxy-style-with-at-unscoped
           - number: 16
-            registry: npm.pkg.github.com
+            name: "npm.errors"
+            registry: https://npm.pkg.github.com/@jcansdale-test
+            job-name: proxy-style-unscoped-with-dot
           - number: 17
-            repository: "${{ github.repository }}"
+            registry: npm.pkg.github.com
+            job-name: registry-no-https
           - number: 18
-            registry: https://npm.pkg.github.com/${{ github.repository }}
+            repository: "${{ github.repository }}"
+            job-name: repository-no-https-github-com
           - number: 19
-            name: "jcansdale-test/npm-errors"
+            registry: https://npm.pkg.github.com/${{ github.repository }}
+            job-name: repository-npm-pkg-github-com
           - number: 20
             name: "jcansdale-test/npm-errors"
+            job-name: package-name-scope-no-at
+          - number: 21
+            name: "jcansdale-test/npm-errors"
             registry: https://npm.pkg.github.com/jcansdale-test
+            job-name: package-name-scope-no-at-proxy
+          - number: 22
+            name: "npm-errors"
+            job-name: unscoped-package
+          - number: 23
+            name: "npm-errors"
+            registry: https://registry.npmjs.org/
+            job-name: npmjs-unscoped-package
       fail-fast: false
 
     runs-on: ubuntu-latest
+
+    name: ${{ matrix.job-name }}
 
     env:
       READ_AND_WRITE_PACKAGES_TOKEN: ${{ secrets.READ_AND_WRITE_PACKAGES_TOKEN }}
