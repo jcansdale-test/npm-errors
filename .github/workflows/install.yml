@@ -25,4 +25,7 @@ jobs:
 
     steps:
     - run: echo '//npm.pkg.github.com/:_authToken=${{ matrix._authToken }}' > .npmrc
+
+    - run: echo '{}' > package.json
+
     - run: npm install --registry=${{ matrix.registry }}
