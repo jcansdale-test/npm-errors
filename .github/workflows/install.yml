@@ -6,13 +6,16 @@ jobs:
   
     strategy:      
       matrix:
-        number: [0]
+        number: [0, 1]
         include:
           - name: "@github-packages-examples/npm-errors"
           - _authToken: "${GITHUB_TOKEN}"
           - registry: https://npm.pkg.github.com
           - number: 0
             job-name: default
+          - number: 1
+            name: "@github-packages-examples/npm-errors-unknown"
+            job-name: unknown-package
       fail-fast: false
 
     runs-on: ubuntu-latest
