@@ -8,13 +8,13 @@ jobs:
       matrix:
         number: [0, 1]
         include:
-          - name: "@github-packages-examples/npm-errors"
+          - name: "@github-packages-examples/npm-publish"
           - _authToken: "${GITHUB_TOKEN}"
           - registry: https://npm.pkg.github.com
           - number: 0
             job-name: default
           - number: 1
-            name: "@github-packages-examples/npm-errors-unknown"
+            name: "@github-packages-examples/npm-publish-unknown"
             job-name: unknown-package
       fail-fast: false
 
