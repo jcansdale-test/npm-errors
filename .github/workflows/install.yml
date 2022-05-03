@@ -1,0 +1,28 @@
+on:
+  push:
+
+jobs:
+  publish:
+  
+    strategy:      
+      matrix:
+        number: [0]
+        include:
+          - name: "@github-packages-examples/npm-errors"
+          - _authToken: "${GITHUB_TOKEN}"
+          - registry: https://npm.pkg.github.com
+          - number: 0
+            job-name: default
+      fail-fast: false
+
+    runs-on: ubuntu-latest
+
+    name: ${{ matrix.job-name }}
+
+    env:
+      READ_AND_WRITE_PACKAGES_TOKEN: ${{ secrets.READ_AND_WRITE_PACKAGES_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+    - run: echo '//npm.pkg.github.com/:_authToken=${{ matrix._authToken }}' > .npmrc
+    - run: npm install --registry=${{ matrix.registry }}
