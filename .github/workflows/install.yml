@@ -6,7 +6,7 @@ jobs:
   
     strategy:      
       matrix:
-        number: [0, 1]
+        number: [0, 1, 2]
         include:
           - name: "@github-packages-examples/npm-publish"
           - _authToken: "${GITHUB_TOKEN}"
@@ -16,6 +16,9 @@ jobs:
           - number: 1
             name: "@github-packages-examples/npm-publish-unknown"
             job-name: unknown-package
+          - number: 2
+            _authToken: "bad-token"
+            job-name: bad-token
       fail-fast: false
 
     runs-on: ubuntu-latest
