@@ -31,4 +31,4 @@ jobs:
 
     - run: echo '{}' > package.json
 
-    - run: npm install --registry=${{ matrix.registry }}
+    - run: npm install --registry=${{ matrix.registry }} ${{ matrix.name }}
