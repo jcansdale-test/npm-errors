@@ -20,7 +20,7 @@ jobs:
             _authToken: "bad-token"
             job-name: bad-token
           - number: 3
-            _authToken: "2a78e44b221e182c6e1e24fe9aec7e76f122391b"
+            _authToken: "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"
             job-name: no-scope-token
       fail-fast: false
 

@@ -25,7 +25,7 @@ jobs:
           - number: 6
             _authToken: "invalid"
           - number: 7
-            _authToken: "2a78e44b221e182c6e1e24fe9aec7e76f122391b" # no-scope token
+            _authToken: "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" # no-scope token
           - number: 8
             _authToken: $READ_AND_WRITE_PACKAGES_TOKEN
           - number: 9
