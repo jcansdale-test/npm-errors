@@ -57,7 +57,7 @@ jobs:
           - number: 21
             name: "@jcansdale-test/util"
           - number: 22
-            name: "@jcansdale-missing/npmerrors"
+            name: "@jcansdale-test/npm.errors"
       fail-fast: false
 
     runs-on: ubuntu-latest
