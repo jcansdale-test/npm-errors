@@ -25,7 +25,6 @@ jobs:
             job-name: no-scope-token
           - number: 4
             name: "@GITHUB-PACKAGES-EXAMPLES/npm-publish"
-            _authToken: "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"
             job-name: uppercase-owner
       fail-fast: false
 
