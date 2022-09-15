@@ -7,7 +7,7 @@ jobs:
   
     strategy:      
       matrix:
-        number: [0, 1, 2, 3]
+        number: [0, 1, 2, 3, 4]
         include:
           - name: "@github-packages-examples/npm-publish"
           - _authToken: "${GITHUB_TOKEN}"
@@ -23,6 +23,10 @@ jobs:
           - number: 3
             _authToken: "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"
             job-name: no-scope-token
+          - number: 4
+            name: "@GITHUB-PACKAGES-EXAMPLES/npm-publish"
+            _authToken: "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"
+            job-name: uppercase-owner
       fail-fast: false
 
     runs-on: ubuntu-latest
